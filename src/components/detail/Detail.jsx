@@ -60,28 +60,28 @@ const Detail = () => {
           <div className="photos">
             <div className="photoItem">
               <div className="photoDetail">
-                <img src="/public/birdie.jpg" alt="Bird Picture" />
+                <img src="/birdie.jpg" alt="Bird Picture" />
                 <span>Photo taken by Licina</span>
               </div>
               <img src="./download.png" alt="" className="icon" />
             </div>
             <div className="photoItem">
               <div className="photoDetail">
-                <img src="/public/birdie.jpg" alt="Bird Picture" />
+                <img src="/birdie.jpg" alt="Bird Picture" />
                 <span>Photo taken by Licina</span>
               </div>
               <img src="./download.png" alt="" className="icon" />
             </div>
             <div className="photoItem">
               <div className="photoDetail">
-                <img src="/public/birdie.jpg" alt="Bird Picture" />
+                <img src="/birdie.jpg" alt="Bird Picture" />
                 <span>Photo taken by Licina</span>
               </div>
               <img src="./download.png" alt="" className="icon" />
             </div>
             <div className="photoItem">
               <div className="photoDetail">
-                <img src="/public/birdie.jpg" alt="Bird Picture" />
+                <img src="/birdie.jpg" alt="Bird Picture" />
                 <span>Photo taken by Licina</span>
               </div>
               <img src="./download.png" alt="" className="icon" />

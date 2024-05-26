@@ -18,15 +18,11 @@ const Chat = () => {
 
   const [text, setText] = useState("");
 
-  const [img, setImg] = useState({
-    file: null,
-    url: "",
-  });
+  const [img, setImg] = useState({ file: null, url: "" });
 
   const { currentUser } = useUserStore();
 
-  const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
-    useChatStore();
+  const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } = useChatStore();
 
   const endRef = useRef(null);
 
@@ -103,11 +99,7 @@ const Chat = () => {
     } catch (err) {
       console.log(err);
     } finally {
-      setImg({
-        file: null,
-        url: "",
-      });
-
+      setImg({ file: null, url: "" });
       setText("");
     }
   };
@@ -116,28 +108,23 @@ const Chat = () => {
     <div className="chat">
       <div className="top">
         <div className="user">
-          <img src={user?.avatar || "./avatar.png"} alt="" />
+          <img src={user?.avatar || "./avatar.png"} alt="Regular Animation" />
           <div className="texts">
             <span>{user?.username}</span>
             <p>Licina family is the one of the most famous family in all over the world.</p>
           </div>
         </div>
         <div className="icons">
-          <img src="./phone.png" alt="" />
-          <img src="./video.png" alt="" />
-          <img src="./info.png" alt="" />
+          <img src="./phone.png" alt="Telephone" />
+          <img src="./video.png" alt="Video" />
+          <img src="./info.png" alt="Information" />
         </div>
       </div>
       <div className="center">
         {chat?.messages?.map((message) => (
-          <div
-            className={
-              message.senderId === currentUser?.id ? "message own" : "message"
-            }
-            key={message?.createAt}
-          >
+          <div className={message.senderId === currentUser?.id ? "message own" : "message"} key={message?.createdAt || message?.createdAt} >
             <div className="texts">
-              {message.img && <img src={message.img} alt="" />}
+              {message.img && <img src={message.img} alt="Message with Image" />}
               <p>{message.text}</p>
               <span>{format(message.createdAt.toDate())}</span>
             </div>
@@ -146,7 +133,7 @@ const Chat = () => {
         {img.url && (
           <div className="message own">
             <div className="texts">
-              <img src={img.url} alt="" />
+              <img src={img.url} alt="Image path" />
             </div>
           </div>
         )}
@@ -155,43 +142,20 @@ const Chat = () => {
       <div className="bottom">
         <div className="icons">
           <label htmlFor="file">
-            <img src="./img.png" alt="" />
+            <img src="./img.png" alt="Image" />
           </label>
-          <input
-            type="file"
-            id="file"
-            style={{ display: "none" }}
-            onChange={handleImg}
-          />
-          <img src="./camera.png" alt="" />
-          <img src="./mic.png" alt="" />
+          <input type="file" id="file" style={{ display: "none" }} onChange={handleImg} />
+          <img src="./camera.png" alt="Camera" />
+          <img src="./mic.png" alt="Microphone" />
         </div>
-        <input
-          type="text"
-          placeholder={
-            isCurrentUserBlocked || isReceiverBlocked
-              ? "You cannot send a message"
-              : "Type a message..."
-          }
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          disabled={isCurrentUserBlocked || isReceiverBlocked}
-        />
+        <input type="text" placeholder={isCurrentUserBlocked || isReceiverBlocked ? "You cannot send a message" : "Type a message..."} value={text} onChange={(e) => setText(e.target.value)} disabled={isCurrentUserBlocked || isReceiverBlocked} />
         <div className="emoji">
-          <img
-            src="./emoji.png"
-            alt=""
-            onClick={() => setOpen((prev) => !prev)}
-          />
+          <img src="./emoji.png" alt="Emoji" onClick={() => setOpen((prev) => !prev)} />
           <div className="picker">
             <EmojiPicker open={open} onEmojiClick={handleEmoji} />
           </div>
         </div>
-        <button
-          className="sendButton"
-          onClick={handleSend}
-          disabled={isCurrentUserBlocked || isReceiverBlocked}
-        >
+        <button className="sendButton" onClick={handleSend} disabled={isCurrentUserBlocked || isReceiverBlocked} >
           Send
         </button>
       </div>

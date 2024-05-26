@@ -6,6 +6,7 @@ import ChatList from './ChatList/ChatList'
 
 
 const List = () => {
+
   return (
     <div className='list' >
       <UserInfo />

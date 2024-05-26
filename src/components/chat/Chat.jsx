@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./Chat.css";
 import EmojiPicker from "emoji-picker-react";
-import { arrayUnion, doc, getDoc, onSnapshot, updateDoc, } from "firebase/firestore";
+import { arrayUnion, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../library/firebase";
 import { useChatStore } from "../../library/chatStore";
 import { useUserStore } from "../../library/userStore";
@@ -13,14 +13,18 @@ import { format } from "../../utils/timeago";
 const Chat = () => {
 
   const [chat, setChat] = useState();
+
   const [open, setOpen] = useState(false);
+
   const [text, setText] = useState("");
+
   const [img, setImg] = useState({
     file: null,
     url: "",
   });
 
   const { currentUser } = useUserStore();
+
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
     useChatStore();
 
@@ -115,7 +119,7 @@ const Chat = () => {
           <img src={user?.avatar || "./avatar.png"} alt="" />
           <div className="texts">
             <span>{user?.username}</span>
-            <p>Lorem ipsum dolor, sit amet.</p>
+            <p>Licina family is the one of the most famous family in all over the world.</p>
           </div>
         </div>
         <div className="icons">

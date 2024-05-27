@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./AddUser.css"
 import { db } from "../../../../library/firebase";
-import { arrayUnion, collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where, } from "firebase/firestore";
+import { arrayUnion, collection, doc, getDocs, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore";
 import { useUserStore } from "../../../../library/userStore";
 
 
@@ -75,7 +75,7 @@ const AddUser = () => {
             {user && (
                 <div className="user">
                     <div className="detail">
-                        <img src={user.avatar || "./avatar.png"} alt="" />
+                        <img src={user.avatar || "./avatar.png"} alt="Profile Picture" />
                         <span>{user.username}</span>
                     </div>
                     <button onClick={handleAdd}>Add User</button>

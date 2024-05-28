@@ -32,12 +32,12 @@ const Login = () => {
 
         const { username, email, password } = Object.fromEntries(formData);
 
-        // VALIDATE INPUTS
+        // Validate Inputs 
         if (!username || !email || !password)
             return toast.warn("Please enter inputs!");
         if (!avatar.file) return toast.warn("Please upload an avatar!");
 
-        // VALIDATE UNIQUE USERNAME
+        // Validate Unique Username 
         const usersRef = collection(db, "users");
         const q = query(usersRef, where("username", "==", username));
         const querySnapshot = await getDocs(q);
@@ -103,15 +103,10 @@ const Login = () => {
                 <h2>Create an Account</h2>
                 <form onSubmit={handleRegister}>
                     <label htmlFor="file">
-                        <img src={avatar.url || "./avatar.png"} alt="" />
+                        <img src={avatar.url || "./avatar.png"} alt="Profile Picture" />
                         Upload an image
                     </label>
-                    <input
-                        type="file"
-                        id="file"
-                        style={{ display: "none" }}
-                        onChange={handleAvatar}
-                    />
+                    <input type="file" id="file" style={{ display: "none" }} onChange={handleAvatar} />
                     <input type="text" placeholder="Username" name="username" />
                     <input type="text" placeholder="Email" name="email" />
                     <input type="password" placeholder="Password" name="password" />
